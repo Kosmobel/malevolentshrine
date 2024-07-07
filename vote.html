@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Голосование за команду</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    
+    .container {
+        max-width: 400px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    select, input[type="text"], input[type="submit"], .back-to-home {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    
+    input[type="submit"], .back-to-home {
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+        margin-top: 10px;
+        text-align: center;
+    }
+    
+    input[type="submit"]:hover, .back-to-home:hover {
+        background-color: #45a049;
+    }
+    
+    .back-to-home {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        width: 120px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Голосование за команду</h2>
+    <form id="voteForm">
+        <div class="form-group">
+            <label for="teamSelect">Выберите команду:</label>
+            <select id="teamSelect" name="team">
+                <option value="РЖД">Команда РЖД</option>
+                <option value="phoenix">Phoenix</option>
+                <option value="rotor">Rotor International</option>
+                <option value="penarol">Penarol</option>
+                <option value="newrussiam">New Russiam</option>
+                <option value="fakefootball">Fake Football</option>
+                <option value="tamojunto">Tamo Junto</option>
+                <option value="rekordklub">Rekord Klub</option>
+                <option value="fdcvista">FDC Vista</option>
+                <option value="chpclile">CHP Clile</option>
+                <option value="stadetunisien">Stade Tunisien</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nameInput">Ваше имя:</label>
+            <input type="text" id="nameInput" name="name" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Отправить">
+        </div>
+    </form>
+</div>
+<a href="index.html" class="back-to-home">На главную</a>
+<script>
+    // Добавляем обработчик события на отправку формы
+    document.getElementById('voteForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвращаем стандартное поведение отправки формы
+        
+        // Получаем значения выбранной команды и имени пользователя
+        const formData = new FormData(this);
+        const team = formData.get('team');
+        const name = formData.get('name');
+        
+        // Просто выводим результаты в консоль (можно отправить на сервер или сделать что-то ещё)
+        //console.log(`Пользователь ${name} проголосовал за команду ${team}`);
+        
+        // Дополнительно можно добавить логику для обновления интерфейса или показа сообщения об успешном голосовании
+        alert(`Спасибо, ${name}! Ваш голос учтен за команду ${team}.`);
+        
+        // Очищаем форму после отправки
+        this.reset();
+    });
+</script>
+
+</body>
+</html>
